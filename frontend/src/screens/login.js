@@ -1,5 +1,5 @@
 // src/screens/SignInScreen.js
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   View,
   Text,
@@ -11,18 +11,22 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {login} from '../api';
+import {AuthContext} from '../authContext';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('jahanzaibkhursheed2002@gmail.com');
+  const [username, setUsername] = useState('jahanzaib');
   const [error, setError] = useState('');
   const navigation = useNavigation();
+  const {setUserId} = useContext(AuthContext);
 
   const handleSignIn = async () => {
     try {
       const result = await login(email);
+      setUserId(result.user.id);
       setError('');
-      console.log('Sign in successful', 'Welcome back!');
+      console.log('Sign in successful', 'Welcome back!', result.user.username);
+      navigation.navigate('Home');
     } catch (error) {
       setError('Username or email is incorrect');
       console.log('Sign in failed', error.message);
