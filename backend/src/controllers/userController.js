@@ -14,7 +14,7 @@ exports.signup = (req, res) => {
         return res.status(500).send(err);
       }
 
-      res.status(201).send("Sign up success");
+      res.status(201).json({ message: "Sign up success" });
     }
   );
 };
@@ -34,6 +34,6 @@ exports.signin = (req, res) => {
 
     const user = results[0];
 
-    res.send({ user });
+    res.status(201).json({ user });
   });
 };
