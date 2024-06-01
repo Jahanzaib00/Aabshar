@@ -89,3 +89,12 @@ export const updateLog = async (logId, newAmount) => {
     throw new Error(error.response.data.message || error.message);
   }
 };
+
+export const getHistory = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/intake/getIntakeHistory`);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response.data.message || error.message);
+  }
+};

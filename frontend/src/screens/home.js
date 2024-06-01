@@ -26,7 +26,7 @@ const Home = () => {
     useCallback(() => {
       fetchWaterIntake();
       fetchGoal();
-    }, []),
+    }, [waterIntake, goal]),
   );
 
   const fetchWaterIntake = async () => {

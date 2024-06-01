@@ -1,9 +1,15 @@
 // src/controllers/intakeController.js
+const moment = require("moment-timezone");
+
 const db = require("../config/db");
+
+const getCurrentDate = () => {
+  return moment().tz("Asia/Karachi").format("YYYY-MM-DD");
+};
 
 // Get daily water intake log
 exports.getIntake = (req, res) => {
-  const currentDate = new Date().toISOString().split("T")[0]; // Get the current date in the format 'YYYY-MM-DD'
+  const currentDate = getCurrentDate();
 
   db.query(
     "SELECT SUM(amount) AS totalAmount FROM water_intake_entries WHERE user_id = ? AND DATE(date) = ?",
@@ -50,8 +56,8 @@ exports.getHistory = (req, res) => {
 
 //get all logs
 exports.getLogs = (req, res) => {
-  const currentDate = new Date().toISOString().split("T")[0]; // Get the current date in the format 'YYYY-MM-DD'
-
+  const currentDate = getCurrentDate();
+  console.log(currentDate);
   db.query(
     "SELECT * FROM water_intake_entries WHERE user_id = ? AND DATE(date) = ?",
     [req.query.user_id, currentDate],

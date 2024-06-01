@@ -6,6 +6,7 @@ import Login from '../screens/login';
 import Signup from '../screens/signup';
 import Home from '../screens/home';
 import Logs from '../screens/logs';
+import IntakeHistory from '../screens/history';
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
@@ -30,6 +31,11 @@ const AppNavigator = () => {
         <Stack.Screen
           name="Logs"
           component={Logs}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="IntakeHistory"
+          component={IntakeHistory}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

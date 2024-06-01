@@ -94,17 +94,37 @@ const Logs = () => {
           </View>
         )}
       />
-      <TouchableOpacity
-        onPress={() => navigation.goBack()}
+      <View
         style={{
-          backgroundColor: '#3b82f6',
-          padding: 10,
-          borderRadius: 5,
-          alignItems: 'center',
-          marginBottom: 16,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          marginTop: 20,
         }}>
-        <Text style={{color: '#fff'}}>Go Back to Home</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('IntakeHistory')}
+          style={{
+            backgroundColor: 'blue',
+            padding: 10,
+            borderRadius: 5,
+            flex: 0.5,
+          }}>
+          <Text style={{color: 'white', textAlign: 'center'}}>
+            View History
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={{
+            backgroundColor: '#3b82f6',
+            padding: 10,
+            borderRadius: 5,
+            alignItems: 'center',
+            flex: 0.5,
+            marginLeft: 10,
+          }}>
+          <Text style={{color: '#fff'}}>Go Back to Home</Text>
+        </TouchableOpacity>
+      </View>
 
       {/* Modal for editing log */}
       <Modal
